@@ -15,5 +15,5 @@ class train:
             cuda.set_per_process_memory_fraction(MemoryLimit,device)
     
     def train(self):
-        self.model.train(data=self.data,epochs=self.epochs)
+        self.model.train(data=self.data,epochs=self.epochs,cache=False)
         

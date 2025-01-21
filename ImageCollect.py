@@ -2,6 +2,7 @@ from hashlib import md5
 from os import system, path
 from time import perf_counter
 from cv2 import imwrite, typing
+from shutil import rmtree
 
 class ImageCollect:
     def __init__(self,BaseDir:str):
@@ -12,7 +13,7 @@ class ImageCollect:
         if not path.isdir(self.BaseDir):
             system(f"mkdir {self.BaseDir} {self.BaseDir}/high_conf {self.BaseDir}/high_conf/images {self.BaseDir}/high_conf/labels {self.BaseDir}/low_conf")
         else:
-            system(f"rm -r {self.BaseDir}")
+            rmtree(self.BaseDir)
             self.__init__(BaseDir)
         
     def save(self, image:typing.MatLike, high_conf:bool = False, items:list[str] = None):
